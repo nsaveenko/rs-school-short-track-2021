@@ -9,8 +9,32 @@
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-function sortByHeight(/* arr */) {
-  throw new Error('Not implemented');
+
+function sortByHeight(arr) {
+  const result = [];
+  const positiveDig = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== -1) {
+      positiveDig.push(arr[i]);
+    }
+  }
+
+  const sortedPositiveDig = positiveDig.sort((a, b) => a - b);
+
+  const a = arr;
+
+  let index = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    if (arr[i] === -1) {
+      result.push(arr[i]);
+    } else if (arr[i] !== -1) {
+      result.push(sortedPositiveDig[index]);
+      index++;
+    }
+  }
+  return result;
 }
 
 module.exports = sortByHeight;
